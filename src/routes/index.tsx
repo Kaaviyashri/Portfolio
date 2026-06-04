@@ -1,29 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Sidebar } from "@/components/portfolio/Sidebar";
+import { Hero } from "@/components/portfolio/Hero";
+import { About } from "@/components/portfolio/About";
+import { Journey } from "@/components/portfolio/Journey";
+import { Research } from "@/components/portfolio/Research";
+import { Projects } from "@/components/portfolio/Projects";
+import { Publications } from "@/components/portfolio/Publications";
+import { Awards } from "@/components/portfolio/Awards";
+import { Vision } from "@/components/portfolio/Vision";
+import { Contact } from "@/components/portfolio/Contact";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Kaaviyashri Saraboji — AI Engineer · AI Researcher · Future PhD" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Kaaviyashri Saraboji — building trustworthy AI for healthcare, wildlife conservation, and public safety. Research, projects, publications, and vision.",
+      },
+      { property: "og:title", content: "Kaaviyashri Saraboji — The Intelligent Forest" },
+      {
+        property: "og:description",
+        content:
+          "An AI researcher's journey through trustworthy machine learning, healthcare AI, and wildlife conservation.",
+      },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="relative min-h-screen">
+      <Sidebar />
+      <Hero />
+      <About />
+      <Journey />
+      <Research />
+      <Projects />
+      <Publications />
+      <Awards />
+      <Vision />
+      <Contact />
+    </main>
   );
 }
