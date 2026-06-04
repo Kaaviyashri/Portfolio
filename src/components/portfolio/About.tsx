@@ -3,11 +3,12 @@ import { SectionLabel } from "./SectionLabel";
 import butterfly from "@/assets/butterfly.png";
 
 const pillars = [
+  "Trustworthy AI",
   "Healthcare AI",
-  "Wildlife Conservation",
-  "Transportation Safety",
+  "Computer Vision",
+  "Wildlife Analytics",
   "AI Governance",
-  "Trustworthy ML",
+  "Uncertainty Quantification",
 ];
 
 export function About() {
@@ -20,16 +21,16 @@ export function About() {
             <h2 className="font-display text-5xl leading-tight md:text-6xl">
               The curious
               <br />
-              <span className="italic text-[var(--gold)]">butterfly.</span>
+              <span className="italic text-[var(--gold)]">researcher.</span>
             </h2>
             <motion.img
               src={butterfly}
               alt=""
               aria-hidden
               loading="lazy"
-              className="mt-10 h-32 w-32 opacity-90"
-              animate={{ y: [0, -10, 0], rotate: [0, 6, -4, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              className="mt-10 h-24 w-24 opacity-80"
+              animate={{ y: [0, -6, 0], rotate: [0, 3, -2, 0] }}
+              transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
 
@@ -41,23 +42,25 @@ export function About() {
             className="space-y-5 text-[15px] leading-relaxed text-foreground/85"
           >
             <p>
-              I am a Master&apos;s student in Software Engineering at the University of
-              Wisconsin–La Crosse and an aspiring AI researcher focused on
-              trustworthy artificial intelligence, healthcare AI, computer vision,
-              and machine learning systems.
+              I am Kaaviyashri Saraboji — a Master&rsquo;s student in Software
+              Engineering at the University of Wisconsin&ndash;La Crosse and a
+              graduate researcher working at the intersection of trustworthy
+              artificial intelligence, healthcare AI, computer vision, and
+              responsible machine learning.
             </p>
             <p>
-              My journey into artificial intelligence began through software
-              engineering and large-scale data systems. Before transitioning into
-              research, I worked in banking technology where I gained firsthand
-              experience building and analyzing systems that support critical
-              decision-making at scale.
+              My path into AI began through software engineering and three years
+              in banking technology at ICICI Bank, where I built and analyzed
+              decision-support systems for retail banking. That experience
+              shaped my conviction that intelligent systems must be reliable,
+              interpretable, and aligned with the people they serve.
             </p>
             <p>
-              Today, my research explores how intelligent systems can be deployed
-              safely in environments where mistakes carry meaningful consequences.
-              My long-term goal is to pursue doctoral research and contribute to AI
-              systems that are transparent, reliable, and worthy of human trust.
+              Today my research focuses on calibration and uncertainty in medical
+              AI, robustness of wildlife detection under domain shift,
+              spatiotemporal modeling for transportation safety, and governance
+              frameworks for clinical AI deployment. I am preparing to pursue
+              doctoral research advancing trustworthy, human-centered AI.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-4">
