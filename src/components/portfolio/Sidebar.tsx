@@ -4,13 +4,10 @@ import {
   GraduationCap,
   Briefcase,
   FlaskConical,
-  BookOpen,
-  Mic,
   FolderGit2,
   Award,
   BadgeCheck,
   Cpu,
-  Mountain,
   Mail,
   Github,
   Linkedin,
@@ -23,13 +20,10 @@ const links = [
   { id: "education", label: "Education", icon: GraduationCap },
   { id: "experience", label: "Experience", icon: Briefcase },
   { id: "research", label: "Research", icon: FlaskConical },
-  { id: "publications", label: "Publications", icon: BookOpen },
-  { id: "presentations", label: "Presentations", icon: Mic },
   { id: "projects", label: "Projects", icon: FolderGit2 },
   { id: "awards", label: "Awards", icon: Award },
   { id: "certifications", label: "Certifications", icon: BadgeCheck },
   { id: "skills", label: "Skills", icon: Cpu },
-  { id: "vision", label: "Vision", icon: Mountain },
   { id: "contact", label: "Contact", icon: Mail },
 ];
 
@@ -46,14 +40,10 @@ export function Sidebar() {
             <TreeMark />
             <div className="font-display text-base leading-tight text-foreground">
               Kaaviyashri
-              <br />
               Saraboji
             </div>
           </div>
           <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
-            AI Engineer · AI Researcher
-            <br />
-            Future PhD
           </p>
         </motion.div>
 
@@ -79,7 +69,7 @@ export function Sidebar() {
 
       <div className="mt-4 flex gap-2 text-muted-foreground">
         <a
-          href="https://www.linkedin.com/in/kaaviyashri-saraboji"
+          href="https://www.linkedin.com/in/kaaviyashri"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="LinkedIn"
@@ -97,7 +87,7 @@ export function Sidebar() {
           <Github className="h-3.5 w-3.5" />
         </a>
         <a
-          href="https://scholar.google.com/"
+          href="https://scholar.google.com/citations?user=eC28UwMAAAAJ&hl=en"
           target="_blank"
           rel="noreferrer noopener"
           aria-label="Google Scholar"

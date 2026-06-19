@@ -10,7 +10,7 @@ type Project = {
   category: string;
   summary: string;
   tech: string[];
-  contributions?: string[];
+  contributions: string[];
 };
 
 const projects: Project[] = [
@@ -19,134 +19,111 @@ const projects: Project[] = [
     title: "Habitat for Humanity Housing & Volunteer Management Portal",
     category: "MSE Capstone · Full-Stack",
     summary:
-      "End-to-end portal for housing applications and volunteer coordination with role-based access, application workflows, and admin reporting.",
-    tech: ["MongoDB", "Express", "React", "Node.js", "JWT", "Tailwind CSS"],
+      "Full-stack capstone portal supporting housing applications, volunteer coordination, document management, and administrative review workflows for Habitat for Humanity.",
+    tech: ["MongoDB", "Express", "React", "Node.js", "JWT", "RBAC"],
     contributions: [
-      "Designed application and volunteer workflows with role-based access",
-      "Built secure authentication with JWT and protected admin views",
-      "Implemented reporting dashboards for housing coordinators",
+      "Designed a 26-step housing application workflow with autosave, server-side validation, and modular routing",
+      "Built JWT authentication and RBAC for applicant, reviewer, and administrator access",
+      "Implemented audit trails, review status tracking, and decision workflows to improve process traceability",
+      "Developed responsive dashboards supporting application review, volunteer coordination, and administrative oversight",
     ],
   },
   {
     id: "pj2",
-    title: "AI-Driven Wildlife Collision Prevention System",
-    category: "Computer Vision · Wildlife",
+    title: "Enterprise Knowledge Intelligence Platform",
+    category: "Generative AI · RAG",
     summary:
-      "Real-time wildlife detection pipeline using YOLO and OpenCV to inform roadside alerts and inform transportation safety interventions.",
-    tech: ["Python", "YOLO", "OpenCV", "TensorFlow"],
+      "Enterprise RAG platform for document ingestion, semantic search, citation-grounded question answering, and scalable knowledge retrieval.",
+    tech: ["Python", "LangChain", "FastAPI", "Qdrant", "OpenAI APIs", "Docker"],
     contributions: [
-      "Trained YOLO detectors across RGB and IR conditions",
-      "Built evaluation pipeline for cross-illumination domain shift",
-      "Linked detections to spatiotemporal risk modeling",
+      "Processed and indexed 10K+ document chunks for enterprise-scale knowledge retrieval",
+      "Built vector search pipelines achieving sub-2-second semantic retrieval performance",
+      "Implemented citation-aware response validation, reducing unsupported LLM outputs by approximately 35%",
+      "Containerized deployment architecture with Docker, reducing environment setup time by approximately 60%",
     ],
   },
   {
     id: "pj3",
-    title: "ARISTOTLE — Ethical Readiness Assessment Platform for Healthcare AI",
-    category: "Responsible AI · Healthcare",
+    title: "Multi-Agent Clinical Workflow Orchestration Platform",
+    category: "Agentic AI · Healthcare",
     summary:
-      "Web platform that assesses healthcare AI systems against ethical readiness criteria across lifecycle stages.",
-    tech: ["React", "Node.js", "AI Governance Frameworks"],
+      "Agentic AI platform orchestrating retrieval, summarization, compliance validation, and reasoning workflows for healthcare-oriented use cases.",
+    tech: ["Python", "LangGraph", "CrewAI", "LangChain", "Qdrant", "REST APIs"],
     contributions: [
-      "Mapped WHO ethical principles to assessment instruments",
-      "Designed lifecycle-aligned scoring and reporting",
-      "Presented at WiSys Innovation On-Ramp 2025",
+      "Designed multi-agent workflows for retrieval, reasoning, validation, and summarization tasks",
+      "Implemented RAG-based retrieval pipelines, improving contextual relevance by approximately 30%",
+      "Reduced intermediate workflow failures by approximately 40% through agent coordination and validation mechanisms",
+      "Integrated external APIs and knowledge systems for automated healthcare workflow execution",
     ],
   },
   {
     id: "pj4",
-    title: "AIOrch — Responsible AI Lifecycle Orchestration Platform",
-    category: "Healthcare AI · MLOps",
+    title: "Meeting Intelligence & Knowledge Retrieval Platform",
+    category: "LLM Application · Speech AI",
     summary:
-      "Orchestration platform managing hospital AI lifecycles from intake and validation through monitoring and retirement.",
-    tech: ["MERN", "Healthcare AI", "MLOps"],
+      "Meeting intelligence platform that converts recordings into searchable transcripts, summaries, action items, and conversational knowledge.",
+    tech: ["Python", "FastAPI", "Whisper", "LangChain", "Qdrant", "OpenAI APIs"],
     contributions: [
-      "Designed governance-by-design lifecycle workflows",
-      "Built orchestration UI for clinical AI artifacts",
-      "Presented at WiSys Big Idea Tournament 2026",
+      "Built speech-to-text pipelines using Whisper for automated transcript generation",
+      "Implemented semantic search and retrieval across meeting archives and discussion history",
+      "Reduced manual meeting documentation effort by approximately 70% through automated summarization",
+      "Developed RAG-powered conversational search for decisions, tasks, and discussion context",
     ],
   },
   {
     id: "pj5",
-    title: "Front Dash — Multi-Portal Food Delivery Management System",
-    category: "Full-Stack",
+    title: "AI-Powered Fraud Intelligence & Risk Monitoring System",
+    category: "Machine Learning · FinTech",
     summary:
-      "Multi-portal food delivery management system with customer, restaurant, and delivery roles built on a Node and MySQL stack.",
-    tech: ["Node.js", "Express", "MySQL"],
+      "Fraud intelligence platform combining anomaly detection, feature engineering, ETL automation, ML inference services, and analytics dashboards.",
+    tech: ["Python", "XGBoost", "FastAPI", "PostgreSQL", "Power BI"],
+    contributions: [
+      "Processed 50K+ daily financial transactions for anomaly detection and fraud monitoring",
+      "Reduced manual fraud review workload by approximately 30% using machine learning risk signals",
+      "Built automated ETL workflows, reducing manual operational effort by approximately 40%",
+      "Designed analytics dashboards supporting faster fraud investigations and operational decision-making",
+    ],
   },
   {
     id: "pj6",
-    title: "Deer-Vehicle Collision Prediction & Budget-Constrained Intervention Planning",
-    category: "ML · Transportation Safety",
+    title: "ARISTOTLE — Ethical Readiness Assessment Platform for Healthcare AI",
+    category: "Responsible AI · Healthcare",
     summary:
-      "Forecasting and optimization framework for predicting deer-vehicle collision hotspots and selecting interventions under budget constraints.",
-    tech: ["Python", "XGBoost", "GIS", "Optimization"],
+      "WHO-aligned healthcare AI governance platform assessing ethical readiness, deployment preparedness, compliance alignment, and governance gaps.",
+    tech: ["JavaScript", "HTML/CSS", "Scoring Engine", "PDF Reports"],
     contributions: [
-      "Engineered spatiotemporal features over Wisconsin crash data",
-      "Achieved MAE 0.706 and R² 0.583 with XGBoost",
-      "Captured 10,497 crashes vs. 10,121 with traditional hotspot methods",
+      "Translated six WHO healthcare AI ethical principles into a structured assessment framework",
+      "Developed a 60-question weighted scoring engine for ethical readiness evaluation",
+      "Generated automated gap analyses and role-specific recommendations, reducing documentation time by approximately 70%",
+      "Improved pilot completion rates by approximately 40% through validation-driven UX design",
     ],
   },
   {
     id: "pj7",
-    title: "Melanoma Detection and Calibration Study",
-    category: "Medical AI",
+    title: "AIOrch — Responsible AI Lifecycle Orchestration Platform",
+    category: "Healthcare AI · MLOps",
     summary:
-      "Empirical study of discrimination-calibration tradeoffs and external validation in dermoscopic melanoma classification.",
-    tech: ["PyTorch", "ResNet50", "ISIC 2019", "HAM10000"],
+      "Governance-by-design platform for managing healthcare AI systems across intake, validation, monitoring, deployment, and retirement stages.",
+    tech: ["MERN", "Healthcare AI", "MLOps", "AI Governance"],
     contributions: [
-      "Trained ResNet50 baselines and class-weighted variants",
-      "Quantified calibration drift via ECE and reliability diagrams",
-      "Validated externally on HAM10000 and evaluated ensembles",
+      "Designed lifecycle governance workflows spanning validation, monitoring, deployment, and retirement stages",
+      "Mapped clinical AI lifecycle activities to governance and compliance checkpoints",
+      "Built orchestration interfaces for managing AI artifacts, validation evidence, and review workflows",
+      "Earned 2nd Place at the WiSys Big Idea Tournament 2026 and received a $1,500 innovation award",
     ],
   },
   {
     id: "pj8",
-    title: "Route Planning using BFS, DFS, and Dijkstra Algorithms",
-    category: "AI · Algorithms",
+    title: "Front Dash — Multi-Portal Food Delivery Management System",
+    category: "Full-Stack",
     summary:
-      "Comparative implementation and analysis of graph search algorithms for shortest-path route planning.",
-    tech: ["Python", "Graph Search", "Algorithms"],
-  },
-  {
-    id: "pj9",
-    title: "Crossword Solver using Constraint Satisfaction and Backtracking",
-    category: "AI · Search",
-    summary:
-      "Constraint-satisfaction crossword solver applying arc consistency and backtracking with heuristics.",
-    tech: ["Python", "CSP", "AI Search"],
-  },
-  {
-    id: "pj10",
-    title: "Chemical Plant Alarm Management System (VDM-SL + JavaFX)",
-    category: "Formal Methods · Safety-Critical",
-    summary:
-      "Safety-critical alarm management system specified in VDM-SL and implemented with JavaFX for operator interaction.",
-    tech: ["Java", "JavaFX", "Formal Methods", "VDM-SL"],
-  },
-  {
-    id: "pj11",
-    title: "YMCA Program Registration System — Design & UX Engineering",
-    category: "Requirements · UX",
-    summary:
-      "Requirements engineering, UML modeling, and Figma-based UX design for a YMCA program registration system.",
-    tech: ["Figma", "UML", "Requirements Engineering"],
-  },
-  {
-    id: "pj12",
-    title: "Authentication & Cryptographic Protocol Implementation Suite",
-    category: "Security",
-    summary:
-      "Implementation suite covering RSA, Diffie-Hellman, OIDC, and TLS as part of an information security course.",
-    tech: ["RSA", "Diffie-Hellman", "OIDC", "TLS"],
-  },
-  {
-    id: "pj13",
-    title: "Secure Coding and Vulnerability Mitigation Framework",
-    category: "Security",
-    summary:
-      "Framework documenting secure coding patterns and vulnerability mitigations across common web stacks.",
-    tech: ["Secure Coding", "OWASP", "Threat Modeling"],
+      "Multi-role food delivery platform supporting customers, restaurants, and delivery partners through a unified management system.",
+    tech: ["Node.js", "Express", "MySQL"],
+    contributions: [
+      "Designed role-based workflows for customers, restaurants, and delivery personnel",
+      "Developed backend services for order management, fulfillment tracking, and reporting",
+      "Built relational database models supporting transactional food delivery operations",
+    ],
   },
 ];
 
@@ -158,15 +135,20 @@ export function Projects() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1fr_3fr]">
           <div>
-            <SectionLabel numeral="VII" label="Projects" />
+            <SectionLabel numeral="V" label="Projects" />
+
             <h2 className="font-display text-5xl leading-tight md:text-6xl">
-              Research stations
+              Systems built
               <br />
-              <span className="italic text-[var(--gold)]">along the trail.</span>
+              <span className="italic text-[var(--gold)]">
+                beyond the papers.
+              </span>
             </h2>
+
             <p className="mt-6 max-w-sm text-sm text-muted-foreground">
-              Each project is a research station along the forest trail — from
-              healthcare AI orchestration to safety-critical formal methods.
+              AI engineering and software systems spanning generative AI, RAG,
+              agentic workflows, healthcare AI, fraud intelligence, full-stack
+              development, and intelligent decision-support tools.
             </p>
           </div>
 
@@ -184,15 +166,19 @@ export function Projects() {
                 <div className="grid h-11 w-11 place-items-center rounded-xl border border-[var(--gold)]/30 bg-[var(--moss)]/15 text-[var(--gold)]">
                   <Hexagon className="h-5 w-5" />
                 </div>
+
                 <div className="mt-4 text-[10px] uppercase tracking-[0.3em] text-[var(--gold)]/80">
                   {p.category}
                 </div>
+
                 <h3 className="mt-2 font-display text-lg leading-snug text-foreground">
                   {p.title}
                 </h3>
+
                 <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
                   {p.summary}
                 </p>
+
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {p.tech.slice(0, 4).map((t) => (
                     <span
@@ -218,21 +204,22 @@ export function Projects() {
         {active && (
           <>
             <Section title="Overview">{active.summary}</Section>
+
             <Section title="Technologies">
               <TagList tags={active.tech} />
             </Section>
-            {active.contributions && (
-              <Section title="Key Contributions">
-                <ul className="space-y-1.5">
-                  {active.contributions.map((c) => (
-                    <li key={c} className="flex gap-2">
-                      <span className="mt-1.5 inline-block h-1 w-1 rounded-full bg-[var(--gold)]" />
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-              </Section>
-            )}
+
+            <Section title="Key Contributions">
+              <ul className="space-y-1.5">
+                {active.contributions.map((c) => (
+                  <li key={c} className="flex gap-2">
+                    <span className="mt-1.5 inline-block h-1 w-1 rounded-full bg-[var(--gold)]" />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
             <div>
               <MetaRow label="Category" value={active.category} />
             </div>

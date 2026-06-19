@@ -20,23 +20,24 @@ const degrees: Degree[] = [
     range: "Aug 2024 – May 2026",
     advisor: "Dr. Dipankar Mitra",
     courses: [
-      "CS 521 — Program Language Concepts",
-      "CS 741 — Software Engineering Principles",
-      "CS 743 — Software Verification & Validation",
-      "CS 555 — Fundamentals of Information Security",
-      "CS 744 — Software Project Management",
-      "CS 746 — Software Modeling & Analysis",
-      "CS 552 — Artificial Intelligence",
-      "CS 798 — Software Development Project",
+      "Artificial Intelligence",
+      "Data Science",
+      "Software Development Project",
+      "Software Design",
+      "Software Verification & Validation",
+      "Software Project Management",
+      "Software Modeling & Analysis",
+      "Fundamentals of Information Security",
+      "Programming Language Concepts",
     ],
   },
   {
     degree: "Master of Science — Computer Science",
     institution: "Bharathidasan University",
-    location: "Tiruchirappalli, India",
-    range: "2021 – 2023",
+    location: "India",
+    range: "June 2021 – May 2023",
     courses: [
-      "Object-Oriented Analysis & Design",
+      "Object-Oriented Analysis & Design (OOAD) and UML",
       "Advanced Java Programming",
       "Compiler Design",
       "Microprocessors & Microcontrollers",
@@ -44,23 +45,27 @@ const degrees: Degree[] = [
       "Network Security",
       "Data Mining & Data Warehousing",
       "C# and .NET Framework",
-      "Web Technologies",
+      "Web Technologies & Open Source Labs",
+      "Major Software Project",
     ],
   },
   {
     degree: "Bachelor of Science — Computer Science",
     institution: "A.V.V.M. Sri Pushpam College",
-    location: "Poondi, India",
-    range: "2015 – 2018",
+    location: "India",
+    range: "June 2015 – May 2018",
     courses: [
-      "Programming",
+      "Problem Solving & Programming",
+      "C, C++ and Java Programming",
       "Data Structures",
       "Operating Systems",
-      "Database Systems",
-      "Networks",
-      "Computer Architecture",
+      "Database Management Systems",
+      "Data Communication Networks",
+      "Computer Architecture & Microprocessor",
+      "Web Media I & II",
       "Software Engineering",
-      "Web Technologies",
+      "Computer Graphics",
+      "Soft Skills Development",
     ],
   },
 ];
@@ -69,17 +74,45 @@ export function Education() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="education" className="relative px-6 py-32 lg:pl-72">
-      <div className="mx-auto max-w-5xl">
+    <section
+      id="education"
+      className="relative overflow-hidden px-6 py-32 lg:pl-72"
+    >
+      {/* Floating Forest Particles */}
+      <div className="pointer-events-none absolute inset-0">
+        {[...Array(12)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-2 w-2 rounded-full bg-[var(--gold)]/30 blur-[1px]"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -40, 0],
+              opacity: [0.15, 0.8, 0.15],
+            }}
+            transition={{
+              duration: 6 + Math.random() * 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-5xl">
         <SectionLabel numeral="II" label="Education" />
+
         <h2 className="max-w-2xl font-display text-5xl leading-tight md:text-6xl">
           Roots of
-          <span className="italic text-[var(--gold)]"> formal learning.</span>
+          <span className="italic text-[var(--gold)]"> Discovery.</span>
         </h2>
 
         <div className="mt-14 space-y-4">
           {degrees.map((d, i) => {
             const isOpen = open === i;
+
             return (
               <motion.div
                 key={d.degree}
@@ -87,7 +120,11 @@ export function Education() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="glass overflow-hidden rounded-2xl"
+                className={`glass overflow-hidden rounded-2xl transition-all duration-500 ${
+                  isOpen
+                    ? "border border-[var(--gold)]/20 shadow-[0_0_40px_rgba(212,175,55,0.12)]"
+                    : ""
+                }`}
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
@@ -97,16 +134,20 @@ export function Education() {
                   <span className="grid h-11 w-11 place-items-center rounded-xl border border-[var(--gold)]/30 bg-[var(--moss)]/15 text-[var(--gold)]">
                     <GraduationCap className="h-5 w-5" />
                   </span>
+
                   <span>
                     <span className="block font-display text-xl text-foreground">
                       {d.degree}
                     </span>
+
                     <span className="mt-1 block text-xs text-muted-foreground">
                       {d.institution} · {d.range}
                     </span>
                   </span>
+
                   <motion.span
                     animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
                     className="text-[var(--gold)]"
                   >
                     <ChevronDown className="h-5 w-5" />
@@ -119,7 +160,10 @@ export function Education() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: "easeOut" }}
+                      transition={{
+                        duration: 0.35,
+                        ease: "easeOut",
+                      }}
                       className="overflow-hidden"
                     >
                       <div className="border-t border-[var(--gold)]/15 px-6 py-6">
@@ -128,6 +172,7 @@ export function Education() {
                             <MapPin className="h-3.5 w-3.5 text-[var(--gold)]" />
                             {d.location}
                           </div>
+
                           {d.advisor && (
                             <div className="flex items-center gap-2">
                               <User className="h-3.5 w-3.5 text-[var(--gold)]" />
@@ -135,10 +180,12 @@ export function Education() {
                             </div>
                           )}
                         </div>
+
                         <div className="mt-5">
                           <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--gold)]/80">
                             Selected Coursework
                           </div>
+
                           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                             {d.courses.map((c) => (
                               <li

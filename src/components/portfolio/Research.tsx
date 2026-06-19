@@ -1,201 +1,255 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Leaf } from "lucide-react";
+import { BookOpen, ExternalLink } from "lucide-react";
 import { SectionLabel } from "./SectionLabel";
-import { DetailModal, MetaRow, Section, TagList } from "./DetailModal";
+import { DetailModal, MetaRow, Section } from "./DetailModal";
+import { Fireflies } from "./Fireflies";
 
-type Paper = {
+type ResearchItem = {
   id: string;
   title: string;
-  status: string;
-  area: string;
-  description: string;
-  keywords: string[];
-  authors?: string;
-  venue?: string;
-  problem?: string;
-  methodology?: string;
-  datasets?: string;
-  results?: string;
+  outcome: string;
+  year: string;
+  summary: string;
+  points: string[];
+  presentations?: string[];
+  doi?: string;
 };
 
-const papers: Paper[] = [
+const researchItems: ResearchItem[] = [
   {
     id: "r1",
     title:
-      "Do Medical LLMs Know When They Do Not Know? Evaluating Uncertainty Disclosure and Overconfidence in Melanoma Risk Assessment",
-    status: "In Preparation (2026)",
-    area: "Medical AI · Trustworthy AI · LLMs",
-    description:
-      "Evaluates whether state-of-the-art medical large language models appropriately communicate uncertainty when assessing melanoma risk from clinical descriptions, with attention to overconfidence, calibration behavior, and implications for AI-assisted clinical decision making.",
-    keywords: ["Medical AI", "LLMs", "Calibration", "Trustworthy AI", "Healthcare"],
-    authors: "Kaaviyashri Saraboji",
-    venue: "Manuscript in preparation",
-    problem:
-      "Medical LLMs are increasingly used for risk reasoning, yet they often present confident answers without disclosing epistemic uncertainty — a critical failure mode in clinical contexts.",
-    methodology:
-      "Structured prompting across multiple medical LLMs over melanoma case vignettes, scoring uncertainty disclosure, calibration, and behavior under ambiguous evidence.",
-    datasets:
-      "Curated melanoma clinical case descriptions derived from public dermatology resources.",
-    results:
-      "Ongoing analysis of overconfidence rates, calibration error, and uncertainty-disclosure patterns across model families.",
+      "Operationalizing WHO Ethical Principles for Healthcare AI: A Lifecycle-Aligned Governance-by-Design Framework",
+    outcome: "Published in AI in Medicine",
+    year: "2026",
+    doi: "https://doi.org/10.3390/aimed1020016",
+    summary:
+      "A governance-by-design framework that translates WHO ethical AI principles into practical lifecycle processes for healthcare AI deployment.",
+    points: [
+      "Developed lifecycle-aligned governance processes across design, validation, deployment, monitoring, and retirement.",
+      "Identified gaps in bias assessment, robustness evaluation, model validation, and post-deployment monitoring.",
+      "Designed practical governance mechanisms supporting responsible deployment of clinical AI systems.",
+    ],
+    presentations: [
+      "Presented at Mayo AI Research Summit 2026",
+      "Presented at IEEE Innovators Summit 2025",
+    ],
   },
   {
     id: "r2",
     title:
-      "Wildlife Detection under Cross-Illumination Domain Shift: Evaluating Robustness Across Daylight, Dusk, and Infrared Conditions",
-    status: "In Preparation",
-    area: "Computer Vision · Wildlife Conservation",
-    description:
-      "Investigates how wildlife detection models trained under one illumination condition perform when deployed under different lighting environments, exploring domain shift, robustness degradation, and adaptation strategies for ecological monitoring.",
-    keywords: ["Computer Vision", "YOLO", "Domain Adaptation", "Wildlife", "Robustness"],
-    authors: "Kaaviyashri Saraboji",
-    venue: "Manuscript in preparation",
-    problem:
-      "Wildlife monitoring cameras operate across daylight, dusk, and infrared regimes, but most detectors are trained on a single domain — leading to silent failures when deployed.",
-    methodology:
-      "YOLOv5 and YOLOv8 training across RGB and IR domains, mixed-domain training, and grayscale ablations to isolate spectral contributions.",
-    datasets: "Camera-trap imagery across diurnal and nocturnal conditions.",
-    results:
-      "Quantified approximately 0.35 mAP degradation under cross-illumination deployment; mixed-domain training mitigates the drop.",
+      "Melanoma Detection and Calibration: Discrimination–Calibration Tradeoffs in Deep Learning",
+    outcome: "Research in progress",
+    year: "2026",
+    summary:
+      "A trustworthy medical AI study examining discrimination-calibration tradeoffs in deep learning-based melanoma classification.",
+    points: [
+      "Trained ResNet50 models on the ISIC 2019 dataset using stratified five-fold cross-validation.",
+      "Evaluated calibration techniques including temperature scaling and logit prior correction.",
+      "Performed external validation on HAM10000 to assess robustness under dataset shift.",
+    ],
   },
   {
     id: "r3",
     title:
-      "A Spatiotemporal Framework for Predicting Deer–Vehicle Collision Hotspots and Supporting Cost-Aware Transportation Interventions",
-    status: "In Preparation",
-    area: "Machine Learning · Transportation Safety",
-    description:
-      "Develops a predictive framework for forecasting deer-vehicle collision hotspots using spatial and temporal risk factors, integrating ML forecasting with cost-aware intervention planning for transportation agencies.",
-    keywords: ["Forecasting", "GIS", "Transportation", "Public Safety", "Machine Learning"],
-    authors: "Kaaviyashri Saraboji",
-    venue: "Manuscript in preparation",
-    problem:
-      "DOTs need budget-aware decisions on where to deploy fencing, signage, and crossings to reduce wildlife-vehicle collisions.",
-    methodology:
-      "Spatiotemporal feature engineering, XGBoost forecasting, and a budget-constrained optimization layer over predicted hotspots.",
-    datasets: "Multi-year Wisconsin deer–vehicle crash records with road and landscape covariates.",
-    results: "XGBoost achieved MAE 0.706, R² 0.583; captured 10,497 crashes vs. 10,121 with traditional hotspots.",
+      "Evaluating the Fairness of Counterfactual Explanations Across Demographic Groups",
+    outcome: "Research in progress",
+    year: "2026",
+    summary:
+      "A fairness and explainable AI study evaluating whether machine learning models provide equitable recourse recommendations across demographic groups.",
+    points: [
+      "Evaluated counterfactual explanations generated by Logistic Regression, Random Forest, and XGBoost models.",
+      "Measured disparities in recourse effort and success rates across sex, age, and race groups.",
+      "Explored evaluation frameworks for trustworthy and equitable AI systems.",
+    ],
   },
   {
     id: "r4",
     title:
-      "Operationalizing Ethical Principles in Healthcare AI: A Practical Governance Framework for Responsible Deployment",
-    status: "Research Project",
-    area: "AI Governance · Responsible AI",
-    description:
-      "Transforms high-level ethical AI principles into actionable governance processes for healthcare organizations deploying AI systems across the model lifecycle.",
-    keywords: ["AI Governance", "Healthcare", "Ethics", "Responsible AI"],
-    authors: "Kaaviyashri Saraboji",
-    venue: "Mayo Clinic AI Research Summit 2026 (abstract accepted); AI in Medicine (under review)",
-    problem:
-      "WHO and similar bodies publish ethical principles, but health systems lack concrete, lifecycle-aligned governance procedures to implement them.",
-    methodology:
-      "Maps WHO ethical principles to design, validation, deployment, monitoring, and retirement controls, with role-based ownership and audit checkpoints.",
-    datasets: "Cross-case analysis of clinical AI deployment scenarios.",
-    results:
-      "A governance-by-design framework providing actionable controls and accountability across the AI lifecycle.",
+      "A Spatiotemporal Machine Learning Framework for Deer-Vehicle Collision Prediction and Budget-Constrained Intervention Planning",
+    outcome: "Accepted at IEEE GHTC 2026",
+    year: "2026",
+    summary:
+      "A spatiotemporal machine learning framework for predicting deer-vehicle collision hotspots and supporting cost-aware intervention planning.",
+    points: [
+      "Developed prediction and optimization models using Wisconsin crash data from 2018–2025.",
+      "Engineered spatial and temporal features capturing seasonal collision risk patterns.",
+      "Achieved MAE 0.706 and R² 0.583 with XGBoost while outperforming traditional hotspot approaches.",
+    ],
+    presentations: ["Presented at WiSys Quick Pitch Competition 2026"],
   },
   {
     id: "r5",
     title:
-      "Calibration and Uncertainty Quantification in Deep Learning-Based Melanoma Classification",
-    status: "Research Project",
-    area: "Medical Imaging · Deep Learning",
-    description:
-      "Studies calibration, confidence estimation, and uncertainty communication in melanoma image classification systems for clinical decision support.",
-    keywords: ["Calibration", "Medical Imaging", "Computer Vision", "Trustworthy AI"],
-    authors: "Kaaviyashri Saraboji",
-    venue: "Manuscript in preparation",
-    problem:
-      "Discrimination-focused training improves AUC but can severely degrade calibration — a dangerous tradeoff for clinical screening.",
-    methodology:
-      "ResNet50 trained on ISIC 2019 with and without class weighting; ECE, reliability diagrams, and external validation on HAM10000; ensemble methods evaluated under dataset shift.",
-    datasets: "ISIC 2019 (training), HAM10000 (external validation).",
-    results:
-      "AUC 0.9138 → 0.9187 while ECE worsened 0.0250 → 0.1093 under class weighting; ensembles improved robustness across datasets.",
+      "Quantifying Cross-Illumination Domain Shift in YOLO-Based Camera-Trap Wildlife Detection",
+    outcome: "Accepted and presented at IEEE EIT 2026",
+    year: "2026",
+    summary:
+      "A computer vision study investigating the impact of illumination changes on wildlife detection performance.",
+    points: [
+      "Evaluated YOLOv5 and YOLOv8 across daytime RGB and nighttime infrared imagery.",
+      "Quantified approximately 0.35 mAP degradation under cross-domain deployment.",
+      "Demonstrated improved robustness through mixed-domain training strategies.",
+    ],
+  },
+  {
+    id: "r6",
+    title:
+      "Lightweight Spatiotemporal Machine Learning Framework for Multi-Class Wildlife Roadkill Classification",
+    outcome: "Accepted and presented at IEEE EIT 2026",
+    year: "2026",
+    summary:
+      "A lightweight machine learning framework for classifying wildlife road mortality using spatial and temporal predictors.",
+    points: [
+      "Trained Random Forest and Gradient Boosting models on 5,132 georeferenced wildlife records.",
+      "Designed robust validation workflows using stratified train-test splits and cross-validation.",
+      "Achieved 89.9% test accuracy with a macro-F1 score of 0.852.",
+    ],
+  },
+  {
+    id: "r7",
+    title:
+      "AI-Powered Animal-Vehicle Collision Prevention Systems: A Comprehensive Review",
+    outcome: "Published in Electronics",
+    year: "2026",
+    doi: "https://doi.org/10.3390/electronics15081767",
+    summary:
+      "A comprehensive review of AI-powered animal-vehicle collision prevention systems and intelligent sensing technologies.",
+    points: [
+      "Reviewed computer vision, sensing, and intelligent transportation approaches for wildlife collision prevention.",
+      "Evaluated RGB, thermal, LiDAR, and radar-based detection systems.",
+      "Proposed a system-level framework integrating sensing, perception, and roadside alert mechanisms.",
+    ],
+    presentations: ["Presented at the 3-Minute Graduate Project Competition 2025"],
   },
 ];
 
+const outcomeColor = (outcome: string) => {
+  if (outcome.startsWith("Published")) {
+    return "from-[var(--moss)] to-[var(--emerald-deep)]";
+  }
+
+  if (outcome.startsWith("Accepted")) {
+    return "from-[var(--gold)]/40 to-[var(--copper)]/30";
+  }
+
+  return "from-foreground/10 to-foreground/5";
+};
+
 export function Research() {
-  const [active, setActive] = useState<Paper | null>(null);
+  const [active, setActive] = useState<ResearchItem | null>(null);
 
   return (
-    <section id="research" className="relative px-6 py-32 lg:pl-72">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-[1fr_3fr]">
-          <div className="relative">
-            <SectionLabel numeral="IV" label="Research" />
-            <h2 className="font-display text-5xl leading-tight md:text-6xl">
-              Leaves of the
-              <span className="italic text-[var(--gold)]"> AI knowledge tree.</span>
-            </h2>
-            <p className="mt-6 max-w-sm text-sm text-muted-foreground">
-              Each paper is a glowing leaf on the canopy — trustworthy AI for
-              healthcare, wildlife, and public safety. Click any leaf to read
-              the full research detail.
-            </p>
-          </div>
+    <section id="research" className="relative overflow-hidden px-6 py-32 lg:pl-72">
+      <div className="pointer-events-none absolute inset-0 opacity-35">
+        <Fireflies count={7} />
+      </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {papers.map((p, i) => (
-              <motion.button
-                key={p.id}
-                onClick={() => setActive(p)}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.06 }}
-                className="glass group relative flex flex-col overflow-hidden rounded-2xl p-5 text-left transition hover:-translate-y-1 hover:border-[var(--gold)]/40"
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <SectionLabel numeral="IV" label="Research" />
+
+        <h2 className="max-w-2xl font-display text-5xl leading-tight md:text-6xl">
+          Leaves of the
+          <br />
+          <span className="italic text-[var(--gold)]">
+            AI knowledge tree.
+          </span>
+        </h2>
+
+        <p className="mt-5 max-w-2xl text-sm text-muted-foreground">
+          Each leaf represents a first-author research contribution in
+          healthcare AI, trustworthy AI, computer vision, wildlife analytics,
+          and transportation safety. Explore the research journey, outcomes,
+          publications, and presentations behind each study.
+        </p>
+
+        <div className="mt-14 space-y-4">
+          {researchItems.map((item, i) => (
+            <motion.button
+              key={item.id}
+              onClick={() => setActive(item)}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06 }}
+              className="glass group grid w-full grid-cols-[auto_1fr_auto] items-center gap-6 rounded-xl p-5 text-left transition hover:border-[var(--gold)]/40"
+            >
+              <div
+                className={`grid h-12 w-12 place-items-center rounded-lg bg-gradient-to-br ${outcomeColor(
+                  item.outcome
+                )} ring-1 ring-[var(--gold)]/20`}
               >
-                <span className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[var(--gold)]/10 blur-2xl transition group-hover:bg-[var(--gold)]/20" />
-                <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-[var(--gold)]/80">
-                  <Leaf className="h-3 w-3" /> {p.area}
+                <BookOpen className="h-5 w-5 text-foreground" />
+              </div>
+
+              <div>
+                <div className="font-display text-lg leading-snug text-foreground">
+                  {item.title}
                 </div>
-                <h3 className="mt-3 font-display text-lg leading-snug text-foreground">
-                  {p.title}
-                </h3>
-                <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
-                  {p.description}
-                </p>
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
-                  <span className="rounded-full border border-[var(--gold)]/30 bg-background/40 px-2 py-0.5 text-[10px] text-[var(--gold)]">
-                    {p.status}
-                  </span>
-                  <span className="text-[10px] text-foreground/70 underline-offset-4 group-hover:underline">
-                    Read more →
-                  </span>
+
+                <div className="mt-1 text-xs italic text-muted-foreground">
+                  {item.year}
                 </div>
-              </motion.button>
-            ))}
-          </div>
+              </div>
+
+              <span className="hidden max-w-[220px] rounded-full border border-[var(--gold)]/30 bg-background/40 px-3 py-1 text-right text-[10px] uppercase tracking-[0.16em] text-[var(--gold)] sm:inline">
+                {item.outcome}
+              </span>
+            </motion.button>
+          ))}
         </div>
       </div>
 
       <DetailModal
         open={!!active}
         onClose={() => setActive(null)}
-        eyebrow={active?.area}
+        eyebrow="First-Author Research"
         title={active?.title ?? ""}
       >
         {active && (
           <>
             <div>
-              <MetaRow label="Status" value={active.status} />
-              <MetaRow label="Authors" value={active.authors ?? "Kaaviyashri Saraboji"} />
-              {active.venue && <MetaRow label="Venue" value={active.venue} />}
+              <MetaRow label="Outcome" value={active.outcome} />
+              <MetaRow label="Year" value={active.year} />
+
+              {active.presentations?.map((presentation) => (
+                <MetaRow
+                  key={presentation}
+                  label="Presentation"
+                  value={presentation}
+                />
+              ))}
+
+              {active.doi && (
+                <MetaRow
+                  label="DOI"
+                  value={
+                    <a
+                      href={active.doi}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center gap-1 text-[var(--gold)] hover:underline"
+                    >
+                      {active.doi.replace("https://doi.org/", "")}
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  }
+                />
+              )}
             </div>
-            <Section title="Abstract">{active.description}</Section>
-            {active.problem && (
-              <Section title="Research Problem">{active.problem}</Section>
-            )}
-            {active.methodology && (
-              <Section title="Methodology">{active.methodology}</Section>
-            )}
-            {active.datasets && <Section title="Datasets">{active.datasets}</Section>}
-            {active.results && <Section title="Results">{active.results}</Section>}
-            <Section title="Keywords">
-              <TagList tags={active.keywords} />
+
+            <Section title="Summary">{active.summary}</Section>
+
+            <Section title="Highlights">
+              <ul className="space-y-1.5">
+                {active.points.map((point) => (
+                  <li key={point} className="flex gap-2">
+                    <span className="mt-1.5 inline-block h-1 w-1 rounded-full bg-[var(--gold)]" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </Section>
           </>
         )}

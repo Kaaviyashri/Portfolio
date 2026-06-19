@@ -3,54 +3,127 @@ import { SectionLabel } from "./SectionLabel";
 
 const groups = [
   {
-    title: "Languages",
-    items: ["Python", "Java", "JavaScript / TypeScript", "C#", "SQL", "C / C++"],
-  },
-  {
-    title: "AI / ML",
+    title: "Programming Languages",
     items: [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "Java",
+      "SQL",
+      "C++",
+    ],
+  },
+
+  {
+    title: "Generative AI & LLMs",
+    items: [
+      "Large Language Models (LLMs)",
+      "RAG",
+      "LangChain",
+      "LangGraph",
+      "Prompt Engineering",
+      "Embedding Models",
+      "Semantic Search",
+      "AI Agents",
+      "Context Retrieval",
+      "Response Validation",
+    ],
+  },
+
+  {
+    title: "Machine Learning",
+    items: [
+      "Machine Learning",
+      "Deep Learning",
+      "Predictive Modeling",
+      "Model Evaluation",
+      "Feature Engineering",
       "PyTorch",
       "TensorFlow",
-      "scikit-learn",
+      "Scikit-learn",
       "XGBoost",
-      "YOLO (v5 / v8)",
-      "OpenCV",
       "Hugging Face",
     ],
   },
+
   {
-    title: "Trustworthy AI",
+    title: "Computer Vision",
     items: [
-      "Calibration & ECE",
-      "Uncertainty Quantification",
+      "YOLOv5",
+      "YOLOv8",
+      "OpenCV",
+      "Object Detection",
+      "Image Classification",
+      "Medical Imaging",
       "Domain Shift Analysis",
-      "Model Evaluation",
-      "AI Governance",
     ],
   },
+
+  {
+    title: "AI Engineering",
+    items: [
+      "FastAPI",
+      "REST APIs",
+      "Microservices",
+      "ETL Pipelines",
+      "Workflow Orchestration",
+      "Inference Pipelines",
+      "API Optimization",
+      "Docker",
+      "CI/CD",
+    ],
+  },
+
+  {
+    title: "Data & Vector Databases",
+    items: [
+      "Qdrant",
+      "FAISS",
+      "Pinecone",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "Data Validation",
+      "Data Modeling",
+    ],
+  },
+
+  {
+    title: "Cloud & Infrastructure",
+    items: [
+      "AWS",
+      "EC2",
+      "S3",
+      "SageMaker",
+      "Linux",
+      "Unix",
+      "Git",
+      "GitHub",
+    ],
+  },
+
+  {
+    title: "Responsible AI",
+    items: [
+      "AI Governance",
+      "Trustworthy AI",
+      "Model Calibration",
+      "Uncertainty Quantification",
+      "Healthcare AI Ethics",
+      "Bias Assessment",
+    ],
+  },
+
   {
     title: "Software Engineering",
     items: [
       "React",
-      "Node.js / Express",
-      "MongoDB",
-      "MySQL",
-      "REST APIs",
-      "JWT / OIDC",
-      "Tailwind CSS",
-    ],
-  },
-  {
-    title: "Tools & Platforms",
-    items: ["Git / GitHub", "Linux", "Docker", "Jupyter", "Figma", "VS Code"],
-  },
-  {
-    title: "Methods",
-    items: [
-      "Spatiotemporal Modeling",
-      "Computer Vision",
-      "Formal Methods (VDM-SL)",
-      "Software V&V",
+      "Node.js",
+      "Express",
+      "System Design",
+      "JWT",
+      "RBAC",
+      "Agile Development",
       "Requirements Engineering",
     ],
   },
@@ -60,11 +133,20 @@ export function Skills() {
   return (
     <section id="skills" className="relative px-6 py-32 lg:pl-72">
       <div className="mx-auto max-w-6xl">
-        <SectionLabel numeral="X" label="Technical Skills" />
+        <SectionLabel numeral="VIII" label="Technical Skills" />
+
         <h2 className="max-w-2xl font-display text-5xl leading-tight md:text-6xl">
-          The researcher&rsquo;s
-          <span className="italic text-[var(--gold)]"> toolkit.</span>
+          Built for
+          <span className="italic text-[var(--gold)]">
+            {" "}intelligent systems.
+          </span>
         </h2>
+
+        <p className="mt-5 max-w-2xl text-sm text-muted-foreground">
+          Technical expertise spanning AI engineering, generative AI,
+          machine learning, computer vision, cloud infrastructure,
+          and production software systems.
+        </p>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {groups.map((g, i) => (
@@ -74,11 +156,12 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="glass rounded-2xl p-6"
+              className="glass rounded-2xl p-6 transition hover:-translate-y-1 hover:border-[var(--gold)]/40"
             >
               <div className="text-[10px] uppercase tracking-[0.3em] text-[var(--gold)]/80">
                 {g.title}
               </div>
+
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {g.items.map((it) => (
                   <span
